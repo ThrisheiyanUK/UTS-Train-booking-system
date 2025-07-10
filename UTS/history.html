@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <script src=""></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <script src="URL/Jquery/jquery.txt"></script>        
+    <link rel="stylesheet" href="URL/css/bootstrap-grid.min.css">
+    <script src="URL/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="project.css">
+</head>
+<body>
+    <div id="built"></div>
+    <div id="bh" class="hide" ng-show="bh">
+        <button style="position:relative;text-align: right;padding:5px;margin-right:-90%;" id="nb" onclick="book()">🔄</button>
+        <h3>Train Ticket booking details</h3><hr>
+        <div id="train" ></div>
+        <button style="position:relative;text-align: right;padding:5px;margin-right:-90%;" id="nb" onclick="platf()">🔄</button>
+        <br><h3>Platform Ticket booking details</h3><hr>
+        <div id="platform"></div>
+    </div>
+    <script src="/project.js"></script>
+    <script src="/project.json"></script>
+    <script>
+        $(function(){
+    var xml=new XMLHttpRequest();
+    xml.open("GET","n.txt",true);
+    xml.send();
+    xml.onreadystatechange=function(){
+        if(xml.readyState==4 && xml.status==200){
+            var z=xml.responseText;
+            var a=JSON.parse(z);
+            if (a==1)
+                $("#built").load("head1.html");
+            else
+                $("#built").load("head.html");
+        }
+    }
+})
+    </script>
+</body>
+</html>
