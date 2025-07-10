@@ -31,7 +31,6 @@ A complete **Train Ticket Booking System** inspired by the Indian Railway's UTS 
 
 ## 📁 Project Structure
 
-```text
 project/
 │
 ├── project1.js         # Express.js backend server
@@ -42,6 +41,7 @@ project/
 ├── n.txt               # Simple login/session flag
 ├── .gitignore          # Git ignore file (optional)
 └── README.md           # Project description
+
 ## 🚀 How to Run the Project Locally
 
 ### 🔧 Prerequisites
@@ -56,7 +56,6 @@ Make sure you have the following installed:
 
 ### 🛠️ Setup Instructions
 
-```bash
 # 1. Clone the repository or navigate to your project folder
 git clone https://github.com/<your-username>/train-booking-system.git
 cd train-booking-system
