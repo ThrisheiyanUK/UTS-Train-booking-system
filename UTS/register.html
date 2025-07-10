@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <script src="URL/Jquery/jquery.txt"></script>        
+    <link rel="stylesheet" href="URL/css/bootstrap-grid.min.css">
+    <script src="URL/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="project.css">
+    <script>
+        $(function(){
+            $("#built").load("head.html");
+})
+    </script>
+</head>
+
+
+<body >
+    <div id="built"></div>
+    <div class="hide" id="reg" ng-app="myreg" ng-controller="myctrl">
+        <h3>Create Account</h3>
+        <form id="rform" name="rform" method="post" ng-model="rform" action="/register" >
+            <table  align="center">
+                <tr>
+                    <td>Name</td>
+                    <td><input type="text" id="rname" name="rname" ng-model="rname" required ng-pattern="/^[a-zA-Z\ ]+$/"><br>
+                    <span ng-show="rform.rname.$dirty && rform.rname.$invalid">
+                        <span ng-show="rform.rname.$error.required">Username is required</span>
+                        <span ng-show="rform.rname.$error.pattern">Username is invalid</span>
+                    </span></td>
+                </tr>
+                <tr>
+                    <td>Age</td>
+                    <td><input type="number" id="rage" name="rage" min="12" max="130"></td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td><input type="radio" id="rgender" value="Male" name="rgender" checked="yes">Male
+                        <input type="radio" value="Female" id="rgender" name="rgender">Female
+                        <input type="radio" value="other" id="rgender" name="rgender">Others</td>
+                </tr>
+                <tr>
+                    <td>Email id</td>
+                    <td><input type="email" id="rmail" name="rmail" ng-model="rmail" required><br>
+                        <span ng-show="rform.rmail.$dirty && rform.rmail.$invalid">
+                            <span ng-show="rform.rmail.$error.required">Mail is required</span>
+                            <span ng-show="rform.rmail.$error.email">Mail is invalid</span>
+                        </span></td>
+                </tr>
+                <tr>
+                    <td>Phone number</td>
+                    <td><input type="text" id="rphone" name="phoneno" ng-model="phoneno" required ng-pattern="/\d{10}/" ng-maxlength="10"><br>
+                        <span ng-show="rform.phoneno.$dirty && rform.phoneno.$invalid">
+                            <span ng-show="rform.phoneno.$error.required">Phone number is required</span>
+                            <span ng-show="rform.phoneno.$error.pattern||rform.phoneno.$error.maxlength">Phone number is invalid</span>
+                        </span></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input type="password" name="rpass" id="rpass" ng-model="rpass"required ng-pattern="/\w{6-13}/"><br>
+                        <span ng-show="rform.rpass.$dirty && rform.rpass.$invalid">
+                            <span ng-show="rform.rpass.$error.required">Password is required</span>
+                            <span ng-show="rform.phoneno.$error.pattern||rform.rpass.$error.password">Password is invalid</span>
+                        </span></td>
+                </tr>
+                <tr>
+                    <td><button id="rsubmit" onclick="rcheck()" name="rsubmit">Submit</button></td>
+                    <td><button name="rreset">Reset</button></td>
+                </tr>
+            </table>
+        </form><hr>
+        <p>If you have any account in UTS ? 
+            <button><a href="login.html" >Sign up</a></button></p>
+    </div>
+    <script src="/project.js"></script>
+    <script src="/project.json"></script> 
+</body>
+</html>

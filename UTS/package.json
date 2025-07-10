@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "atlas": "^1.0.0-alpha.0",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "mongo": "^0.1.0",
+    "mongodb": "6.5",
+    "mongoose": "^7.6.11",
+    "my-library": "^1.0.0",
+    "node": "^18.20.2",
+    "path": "^0.12.7"
+  }
+}

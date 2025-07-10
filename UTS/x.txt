@@ -1,0 +1,1 @@
+{"regno":"82005","name":"TOBBY","age":"20","gender":"Male","date":"2025-07-10T05:33:08.146Z","email":"to@gmail.com","phone":"8999999999","password":"Thor@1","_id":"686f5094d3cd9f0ccd28f238","__v":0}

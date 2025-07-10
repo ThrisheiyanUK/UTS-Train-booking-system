@@ -1,0 +1,190 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <title>🚊UTS</title> 
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> 
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script> 
+        <script src=""></script>         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" > 
+        <link rel="stylesheet" href="project.css"> 
+         
+    </head> 
+    <body ng-app="train" ng-controller="ctrl"> 
+        <header id="head" class="container-fluid d-flex justify-contentbetween"> 
+            <div id="prof" onclick="cprofile()"><a href=""><img src="profile.png" width="60" height="50" alt="Profile"></a></div> 
+            <div>🚉 UTS 🚉<br>Unreserved Train Ticket Booking</div> 
+            <div id="time"></div> 
+        </header><br> 
+        <div id="btn" class="d-flex justify-content-around">             <div id="home"  onclick="chome()" ><button><img src="home.png"><br>HOME</button></div> 
+            <div  id="login" onclick="logind()"><button><img src="login.webp"><br>Login</button></div> 
+            <div id="tticket" onclick="ctt()"><button href=""><img src=" platform.png"><br>Train Ticket</button></div> 
+            <div  id="pticket" onclick="cpt()"><button href=""><img src="trainticket.png"><br>Platform Ticket</button></div> 
+
+            <div id="ctticket" onclick="cctt()"><button href=""><img src="platform.png">✖️<br>Cancel Train</button></div> 
+            <div id="cpticket" onclick="ccpt()"><button href=""><img src=" canceltrain.png"><br>Cancel Platform</button></div>                         <div id="history" onclick="cbh()"><button href=""><img src="history.png"><br>Booking History</button></div>                         <div id="info" onclick="ci()"><button href=""><img src="info.png"><br>About</button></div> 
+        </div><br><br> 
+        <div id="disp" class="container justify-content-around"> 
+            <h1>Welcome to our site</h1> 
+            <ul type="none" align="left"> 
+                <li >"On the right track to your destination. Book your train tickets online."</li> 
+                <li>"Book your ticket, sit back, and enjoy the ride!"</li>                 <li>"Let the rhythm of the rails take you places. Book your train tickets today."</li> 
+                <li>"Take the train and experience the joy of the journey."</li> 
+                <li>"Every train is its own world, and every passenger a storyteller."</li> 
+                <li>"From platform to destination. Book your train tickets seamlessly."</li>     
+            </ul> 
+            <p id="error"></p> 
+        </div> 
+        <div id="h" class="hide" ng-show="home"> 
+            <h1>Welcome to our site</h1> 
+            <ul type="none" align="left"> 
+                <li >"On the right track to your destination. Book your train tickets online."</li> 
+                <li>"Book your ticket, sit back, and enjoy the ride!"</li>                 <li>"Let the rhythm of the rails take you places. Book your train tickets today."</li> 
+                <li>"Take the train and experience the joy of the journey."</li> 
+                <li>"Every train is its own world, and every passenger a storyteller."</li> 
+                <li>"From platform to destination. Book your train tickets seamlessly."</li>     
+            </ul> 
+        </div> 
+        <div id="log" class="hide" class="container" ng-show="login"> 
+            <h3>Log in</h3> 
+            <form name="lform"> 
+                <input type="text" name="phone" id="lphone"placeholder="Phone number" maxlength="10" size="25"><br> 
+
+                <input type="password" placeholder="Password" name="pw" id="lpw"size="25"><br> 
+                <input type="button" onclick="login()" value="Log in"><hr> 
+                <input type="button" id="register"onclick="sign()" value="Register"> 
+            </form> 
+        </div> 
+        <div id="tt" class="hide"> 
+            <h3>Train Ticket booking</h3> 
+            <form name="ttform"> 
+                <table  align="center"> 
+                    <tr> 
+                        <td>Source Station</td> 
+                        <td><input type="text" id="sstation" name="sstation"></td>                     </tr> 
+                    <tr> 
+                        <td>Destination Station</td> 
+                        <td><input type="text" id="dstation" name="dstation"></td>                     </tr> 
+                    <tr> 
+                        <td>Journey Date</td> 
+                        <td><input type="date" id="date" name="date" min="Today"></td> 
+                    </tr> 
+                    <tr> 
+                        <td>No of Passenger</td> 
+                        <td><input type="number" ng-model="tnop" value="1" id="tnop" name="nop" min="1" onchange="ttprice()"></td> 
+                    </tr> 
+                    <tr> 
+                        <td>Phone number</td> 
+                        <td><input type="text" id="phoneno" name="phoneno" length="10"></td> 
+                    </tr> 
+                    <tr> 
+                        <td><input type="submit"  value="Submit"id="tsubmit" onclick="tcheck()" name="submit"></td> 
+                        <td><input type="reset" value="Reset" id="treset" name="reset"></td>                     </tr> 
+                </table> 
+            </form> 
+        </div> 
+        <div name="ctt" class="hide" id="ctt" ng-show="ctt"> 
+            <h3>Cancel Train Ticekt</h3> 
+            <p>PNR NO in Booking history</p> 
+
+<form> 
+                <input type="text" name="pnr" placeholder="PNR NO" id="pnr"><br>                 <input type="submit" value="Submit" onclick="ctcheck()" id="csubmit"> 
+            </form> 
+        </div> 
+        <div id="pt" class="hide" ng-show="pt"> 
+            <h3>Booking Platform Ticket</h3> 
+            <form id="ptform" name="ptform"> 
+                <input type="text" name="plat" id="pn" placeholder="Station name"><br> 
+                <input type="number" name="noop" ng-model="pnop" id="np" placeholder="No of ticket" value="1" min="1"><br> 
+                <input type="button" onclick="pcheck()" value="Submit" > 
+            </form> 
+        </div> 
+        <div id="cpt" class="hide" ng-show="cpt"> 
+            <h3>Cancel Platform Ticket</h3> 
+            <p>Ticket number in Booking history</p> 
+            <form id="cptform" name="cptform"> 
+                <input type="text" name="cpn" id="cpn" placeholder="Ticket no" ><br> 
+                <input type="button" onclick="ptcheck()" value="Submit"> 
+            </form> 
+        </div> 
+        <div id="bh" class="hide" ng-show="bh"> 
+            <h3>Train Ticket booking details</h3><hr><p id="nb">No Train Booking found</p> 
+            <div id="train" ></div> 
+            <h3>Platform Ticket booking details</h3><hr><p id="nbp">No Platform booking found</p> 
+            <div id="platform"></div> 
+        </div> 
+        <div class="hide" id="profile" align="center"><h3>Profile</h3></div> 
+        <div id="about" class="hide" ng-show="about"> 
+            <h1>Unreserved Ticketing System (UTS)</h1> 
+            <h4>Issuing of UTS tickets:</h4><hr> 
+            <ul> 
+                <li>Passengers can purchase Unreserved Ticket 3 (Three) days in advance (Excluding the day of journey) for Journey of 200 (Two Hundred) kilometers and above.</li> 
+                <li>The passengers can purchase unreserved tickets involving journey of any distance on the same day.</li> 
+                <li>Passengers can purchase now half yearly (HST) & yearly 
+(YST) season tickets also as per their requirement.</li> 
+            </ul> 
+            <h4>How to book a Journey Ticket?</h4><hr> 
+            <ul> 
+                <li>The passenger should have either Android or Windows utsonmobile apps.</li> 
+                <li>He/she should be a valid registered user in the Mobile ticketing System.</li> 
+                <li>The passenger should have sufficient money in your account</li> 
+            </ul> 
+            <h4>Cancellation of UTS Tickets:</h4><hr> 
+            <p>Unused tickets on which no reservation has been made If a ticket on which no reservation of a seat or berth has been made is presented to the station master for cancellation, refund of fare shall be made on every such ticket after deducting the clerkage-</p> 
+            <ul> 
+                <li>The ticket is presented for cancellation within three hours of issue of ticket;</li> 
+                <li>In case of tickets issued in advance, the ticket is presented upto 24.00 hours of the day preceding the day of journey".</li>                 <li>Cancellation would be permitted only if the nodes are connected to the server and should not be permitted when they are in off line mode due to any reason.</li> 
+                <li>Cancellation of UTS tickets would not be permitted at JTBS counters.</li> 
+            </ul> 
+            <h4>Can a ticket be booked inside the station premises?</h4><hr>             <p>According to the Railway commercial rule, a passenger should enter the Railway premises after purchasing the ticket. Hence, booking a ticket using utsonmobile application inside the station premises is not permissible.</p> 
+        </div> 
+        <div class="hide" id="price" > 
+            <h3 id="pri">Total Payment for ticket<br>Rs.₹</h3> 
+            <label><input type="radio" name="pay" value="otp" id="pay" checked 
+>Payment method using G pay, Paytm, Credit card or Debit card</label><br>             <input type="radio" name="pay" value="upi" id="pay" >Payment method using UPI<br> 
+            <input type="button" onclick="paid()" value="Pay"> 
+        </div> 
+        <div class="hide" id="reg"> 
+            <h3>Create Account</h3> 
+            <form id="rform" name="rform" > 
+                <table  align="center"> 
+                    <tr> 
+                        <td>Name</td> 
+                        <td><input type="text" id="rname" name="rname"></td> 
+                    </tr> 
+                    <tr> 
+                        <td>Age</td> 
+                                     <td><input type="number" id="rage" 
+name="rage"  max="100"></td> 
+                    </tr> 
+                    <tr> 
+                        <td>Gender</td> 
+                        <td><input type="radio" id="rgender" value="Male" name="rgender" >Male<input type="radio" value="Female" id="rgender" name="rgender">Female</td>                     </tr> 
+                    <tr> 
+                        <td>Email id</td> 
+                        <td><input type="email" id="rmail" name="rmail"></td> 
+                    </tr> 
+                    <tr> 
+                        <td>Phone number</td> 
+                        <td><input type="text" id="rphone" name="phoneno" length="10"></td> 
+                    </tr> 
+                    <tr> 
+                        <td>Password</td> 
+                        <td><input type="password" name="rpass" id="rpass"></td> 
+                    </tr> 
+                    <tr> 
+                        <td><input type="submit"  value="Submit"id="rsubmit" onclick="rcheck()" name="rsubmit"></td> 
+                        <td><input type="reset" value="Reset" id="rreset" name="rreset"></td>                     </tr> 
+                </table> 
+            </form> 
+        </div> 
+        <script src="/project.js"></script> 
+        <script src="/project.json"></script> 
+    <footer id="foot" class="container-fluid "> 
+        <div class="container" align="left">  
+        <p><i>Helpline :</i> 0562-242-0111</p> 
+        <p><i>Contact us :</i> 011-39340000, Monday to Saturday (10 AM - 6 
+PM), or 24/7 at care@irctc.co.in.</p> 
+        <p>Feedback : <a 
+href="mailto:utsonmobile@cris.org.in?subject=Feedback&body= Report your issue."> Send Mail</a></p> 
+    </div></footer> 
+    </body> 
+</html> 
